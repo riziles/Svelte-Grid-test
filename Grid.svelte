@@ -2,8 +2,8 @@
 	import { RevoGrid } from "@revolist/svelte-datagrid";
 	import { defineCustomElements } from "@revolist/revogrid/loader";
 
-	let result = null
-	
+	let result = null;
+
 	function generateHeader(index) {
 	  const asciiFirstLetter = 65;
 	  const lettersCount = 26;
@@ -57,21 +57,20 @@
 	  headers = data.headers;
 	});
 
-		async function doPost () {
-		const res = await fetch('https://httpbin.org/post', {
-			method: 'POST',
-			body: JSON.stringify({
-				source
-			})
-		})
-		
-		const json = await res.json()
-		result = JSON.stringify(json)
+	async function doPost() {
+	  const res = await fetch("https://httpbin.org/post", {
+	    method: "POST",
+	    body: JSON.stringify({
+	      source
+	    })
+	  });
+
+	  const json = await res.json();
+	  result = JSON.stringify(json);
 	}
 </script>
 
 <style>
-
 </style>
 
 
@@ -79,7 +78,7 @@
 	Post it.
 </button>
 
-<RevoGrid class="grid" on:beforeEdit={onEdit} source={source} resize="true" columns={headers} theme="material"/>
+<RevoGrid class="grid" on:beforeEdit={onEdit} source={source} range="true" resize="true" columns={headers} theme="material"/>
 
 <p>
 	Result:
